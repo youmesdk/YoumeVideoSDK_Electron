@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script src="./renderer.js"></script>
+	<title>YoumeRTCDemo</title>
+</head>
+<style type="text/css">
+	#nav button {
+		color: black;
+		text-align: center;
+		padding: 4px;
+		border: 1px solid #ccc;
+		background-color: white;
+	}
+</style>
+
+<body class="no-sidebar">
+
+	<!-- Header Wrapper -->
+	<div id="header-wrapper">
+		<!-- Header -->
+		<div id="header" class="container" style="width: 98%;padding: 10px;min-height: 10%;text-align: center">
+			<nav id="nav">
+				<button type="button" onclick="youme_Init()">初始化引擎</button>
+				<button type="button" onclick="youme_JoinRoom()">加入房间</button>
+				<button type="button" onclick="youme_LeaveRoom()">离开房间</button>
+				<button type="button" onclick="youme_OpenCamera()">打开摄像头</button>
+				<button type="button" onclick="youme_CloseCamera()">关闭摄像头</button>
+				<button type="button" onclick="youme_OpenMic()">打开麦克风</button>
+				<button type="button" onclick="youme_CloseMic()">关闭麦克风</button>
+				<button type="button" onclick="youme_OpenSpeaker()">打开扬声器</button>
+				<button type="button" onclick="youme_CloseSpeaker()">关闭扬声器</button>
+        <button type="button" onclick="startPushRTMP(this)">录屏推流</button>
+		<button id="shareScreenBtn" type="button" onclick="youme_startScreenShare()">实时共享屏幕</button>
+		<button id="shareWinBtn" type="button" onclick="youme_startWindowShare()">实时共享窗口</button>
+			</nav>
+			<nav id="nav2" style="padding: 10px;">
+				<li>
+					<label>roomid:</label>
+					<input type="text" id="inputRoomid" size="25" maxlength="50" value="" placeholder="数字、字母、下划线" />
+					<label>userid:</label>
+					<input type="text" id="inputUserid" size="25" maxlength="50" value="" placeholder="数字、字母、下划线" />
+				</li>
+				<li>
+					<span>当前音量:</span>
+					<input id="rangeVolume" type="range" min="0" max="100" step="1" value="100" onchange="setVolume()">
+					<span id="volumeValue">100</span>
+					<label>选择摄像头:</label>
+					<select id="cameraList" style="min-width: 60px;">
+					</select>
+				</li>
+			</nav>
+			<nav id="nav3">
+				<li>
+					<label>视频本地宽:</label>
+					<input type="number" id="inputLocalWidth" style="width: 50px;border-width: 0; " pattern="[0,9]" maxlength="50" value="640"
+					 step="1" min="0" />
+					<label>视频本地高:</label>
+					<input type="number" id="inputLocalHeight" style="width: 50px;border-width: 0; " pattern="[0,9]" maxlength="50" value="480"
+					 step="1" min="0" />
+				</li>
+				<li>
+					<label>视频网络宽:</label>
+					<input type="number" id="inputNetWidth" style="width: 50px;border-width: 0; " pattern="[0,9]" maxlength="50" value="320"
+					 step="1" min="0" />
+					<label>视频网络高:</label>
+					<input type="number" id="inputNetHeight" style="width: 50px;border-width: 0; " pattern="[0,9]" maxlength="50" value="240"
+					 step="1" min="0" />
+				</li>
+				<li>
+					<label>视频合流宽:</label>
+					<input type="number" id="inputMixWidth" style="width: 50px;border-width: 0; " pattern="[0,9]" maxlength="50" value="320"
+					 step="1" min="0" />
+					<label>视频合流高:</label>
+					<input type="number" id="inputMixHeight" style="width: 50px;border-width: 0; " pattern="[0,9]" maxlength="50" value="240"
+					 step="1" min="0" />
+				</li>
+
+			</nav>
+		</div>
+	</div>
+
+	<!-- Main Wrapper -->
+	<div id="main-wrapper">
+
+		<!-- Main -->
+		<div id="main" class="container">
+			<div class="row">
+
+				<!-- Content -->
+				<div id="content0" style=" padding: 20px;min-height: 240px;float: right;width: 320px;margin-top: -100px;" wid background-color="beige">
+				</div>
+
+			</div>
+			<div class="row">
+
+				<!-- Content -->
+				<div id="content1" style=" padding: 20px;" background-color="beige">
+				</div>
+
+			</div>
+			<div class="row">
+
+				<!-- Content -->
+				<div id="content2">
+					<div>
+						<textarea id="logDiv" style="width:98%;overflow:auto;word-break:break-all;font-size: 18px;padding: 1%;" rows="8" readonly="true"
+						 cols="130"></textarea>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

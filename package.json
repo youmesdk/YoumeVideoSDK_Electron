@@ -1,0 +1,51 @@
+{
+  "name": "youme-electron-demo",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "start": "electron ./Demo/main.js",
+    "postinstall": "node ./scripts/CopyShaderFile.js",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "author": "youme",
+  "devDependencies": {
+    "chalk": "^2.4.2",
+    "copy": "^0.3.2",
+    "electron-builder": "^22.1.0",
+    "electron": "^8.3.3",
+    "node-gyp": "7.0.0",
+    "node-sass": "^4.14.1"
+  },
+  "dependencies": {
+    "ffi-napi": "git+https://code.aliyun.com/youme-sdk/node-ffi-napi.git",
+    "iconv-lite": "^0.6.2",
+    "ref-napi": "git+https://code.aliyun.com/youme-sdk/ref-napi.git",
+    "ref-array-di": "^1.2.2"
+  },
+  "main": "./Demo/main.js",
+  "build": {
+    "appId": "im.youme.electron.demo",
+    "files": [
+      "Demo/",
+      "package.json",
+      "youmevideo.min.js"
+    ],
+    "extraFiles": [
+      {
+        "from": "youme_voice_engine/shaders/",
+        "to": "./shaders/"
+      }
+    ],
+    "afterPack": "./packageScripts/AfterPackHook.js",
+    "asar": {
+      "smartUnpack": true,
+      "externalAllowed": true
+    },
+    "asarUnpack": [
+      "*.node",
+      "**/*.node"
+    ]
+  }
+}

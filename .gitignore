@@ -1,0 +1,5 @@
+node_modules
+electron-quick-start-win32-ia32
+# .npmrc
+.DS_Store
+.vscode/ipch
